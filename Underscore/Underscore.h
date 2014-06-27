@@ -29,6 +29,7 @@
 #import "USConstants.h"
 #import "USArrayWrapper.h"
 #import "USDictionaryWrapper.h"
+#import "USDictionaryEntry.h"
 
 @interface Underscore : NSObject
 
@@ -44,6 +45,14 @@
 + (UnderscoreTestBlock)isEmpty;
 
 + (UnderscoreSortBlock)compare;
+
++ (UnderscoreArrayMapBlock(^)(UnderscoreArrayMapBlock, UnderscoreArrayMapBlock))compose;
++ (UnderscoreArrayMapBlock)maybe;
++ (UnderscoreArrayMapBlock(^)(id obj))lookup;
++ (UnderscoreArrayMapBlock(^)(id obj))lookupKeyPath;
+
++ (UnderscoreArrayMapBlock)key;
++ (UnderscoreArrayMapBlock)value;
 
 - (id)init __deprecated;
 

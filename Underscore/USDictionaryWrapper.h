@@ -39,9 +39,16 @@
 
 @property (readonly) USArrayWrapper *keys;
 @property (readonly) USArrayWrapper *values;
+@property (readonly) USArrayWrapper *array;
+
+@property (readonly) USDictionaryWrapper *(^assoc)(id key, id value);
+@property (readonly) USDictionaryWrapper *(^dissoc)(id key);
 
 @property (readonly) USDictionaryWrapper *(^each)(UnderscoreDictionaryIteratorBlock block);
 @property (readonly) USDictionaryWrapper *(^map)(UnderscoreDictionaryMapBlock block);
+
+@property (readonly) USDictionaryWrapper *(^mapKeys)(UnderscoreArrayMapBlock block);
+@property (readonly) USDictionaryWrapper *(^mapValues)(UnderscoreArrayMapBlock block);
 
 @property (readonly) USDictionaryWrapper *(^pick)(NSArray *keys);
 
@@ -53,5 +60,7 @@
 
 @property (readonly) USDictionaryWrapper *(^rejectKeys)(UnderscoreTestBlock block);
 @property (readonly) USDictionaryWrapper *(^rejectValues)(UnderscoreTestBlock block);
+
+@property (readonly) USDictionaryWrapper *(^mergeWith)(NSDictionary *other, UnderscoreReduceBlock block);
 
 @end

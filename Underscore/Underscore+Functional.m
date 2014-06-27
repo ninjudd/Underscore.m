@@ -72,6 +72,20 @@
     };
 }
 
++ (NSArray *(^)(NSArray *, NSArray *))into
+{
+    return ^(NSArray *array, NSArray *more) {
+        return Underscore.array(array).into(more).unwrap;
+    };
+}
+
++ (NSArray* (^)(NSArray *, id))conj
+{
+    return ^(NSArray *array, id obj) {
+        return Underscore.array(array).conj(obj).unwrap;
+    };
+}
+
 + (NSUInteger (^)(NSArray *, id))indexOf
 {
     return ^(NSArray *array, id obj) {
@@ -90,6 +104,13 @@
 {
     return ^(NSArray *array) {
         return Underscore.array(array).uniq.unwrap;
+    };
+}
+
++ (NSArray *(^)(NSArray *array, UnderscoreArrayMapBlock block))uniqOn
+{
+    return ^(NSArray *array, UnderscoreArrayMapBlock block) {
+        return Underscore.array(array).uniqOn(block).unwrap;
     };
 }
 
@@ -142,6 +163,20 @@
     };
 }
 
++ (NSDictionary *(^)(NSArray *array, UnderscoreArrayMapBlock block))mapTo
+{
+    return ^(NSArray *array, UnderscoreArrayMapBlock block) {
+        return Underscore.array(array).mapTo(block);
+    };
+}
+
++ (NSDictionary *(^)(NSArray *array, UnderscoreArrayMapBlock block))mapFrom
+{
+    return ^(NSArray *array, UnderscoreArrayMapBlock block) {
+        return Underscore.array(array).mapFrom(block);
+    };
+}
+
 + (NSArray *(^)(NSArray *, NSString *))pluck
 {
     return ^(NSArray *array, NSString *keyPath) {
@@ -189,6 +224,13 @@
     };
 }
 
++ (NSArray *(^)(NSArray *, UnderscoreArrayMapBlock))sortBy
+{
+    return ^(NSArray *array, UnderscoreArrayMapBlock block) {
+        return Underscore.array(array).sortBy(block).unwrap;
+    };
+}
+
 #pragma mark NSDictionary shortcuts
 
 + (USDictionaryWrapper *(^)(NSDictionary *))dict
@@ -210,6 +252,26 @@
         return [USDictionaryWrapper wrap:dictionary].values.unwrap;
     };
 }
++ (NSArray *(^)(NSDictionary *))dictArray
+{
+    return ^(NSDictionary *dictionary) {
+        return [USDictionaryWrapper wrap:dictionary].array.unwrap;
+    };
+}
+
++ (NSDictionary *(^)(NSDictionary *dictionary, id, id))assoc
+{
+    return ^(NSDictionary *dictionary, id key, id value) {
+        return Underscore.dict(dictionary).assoc(key, value).unwrap;
+    };
+}
+
++ (NSDictionary *(^)(NSDictionary *dictionary, id key))dissoc
+{
+    return ^(NSDictionary *dictionary, id key) {
+        return Underscore.dict(dictionary).dissoc(key).unwrap;
+    };
+}
 
 + (void (^)(NSDictionary *, UnderscoreDictionaryIteratorBlock))dictEach
 {
@@ -222,6 +284,19 @@
 {
     return ^(NSDictionary *dictionary, UnderscoreDictionaryMapBlock block) {
         return Underscore.dict(dictionary).map(block).unwrap;
+    };
+}
+
++ (NSDictionary *(^)(NSDictionary *, UnderscoreArrayMapBlock))mapKeys
+{
+    return ^(NSDictionary *dictionary, UnderscoreArrayMapBlock block) {
+        return [USDictionaryWrapper wrap:dictionary].mapKeys(block).unwrap;
+    };
+}
++ (NSDictionary *(^)(NSDictionary *, UnderscoreArrayMapBlock))mapValues
+{
+    return ^(NSDictionary *dictionary, UnderscoreArrayMapBlock block) {
+        return [USDictionaryWrapper wrap:dictionary].mapValues(block).unwrap;
     };
 }
 
@@ -269,6 +344,13 @@
 {
     return ^(NSDictionary *dictionary, UnderscoreTestBlock block) {
         return [USDictionaryWrapper wrap:dictionary].rejectValues(block).unwrap;
+    };
+}
+
++ (NSDictionary *(^)(NSDictionary *, NSDictionary *, UnderscoreReduceBlock))mergeWith
+{
+    return ^(NSDictionary *dictionary, NSDictionary *other, UnderscoreReduceBlock block) {
+        return [USDictionaryWrapper wrap:dictionary].mergeWith(other, block).unwrap;
     };
 }
 

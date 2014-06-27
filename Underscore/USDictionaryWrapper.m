@@ -27,6 +27,7 @@
 #import "Underscore.h"
 
 #import "USDictionaryWrapper.h"
+#import "USDictionaryEntry.h"
 
 @interface USDictionaryWrapper ()
 
@@ -78,6 +79,42 @@
     return [USArrayWrapper wrap:self.dictionary.allValues];
 }
 
+- (USArrayWrapper *)array
+{
+    NSMutableArray *result = [NSMutableArray arrayWithCapacity:self.dictionary.count];
+    for (id key in self.dictionary.allKeys) {
+        id value = [self.dictionary objectForKey:key];
+        [result addObject:[[USDictionaryEntry alloc] initWithKey:key value:value]];
+    }
+    return [USArrayWrapper wrap:result];
+}
+
+- (USDictionaryWrapper *(^)(id, id))assoc
+{
+    return ^USDictionaryWrapper *(id key, id value) {
+        if (key && value) {
+            __block NSMutableDictionary *result = [self.dictionary mutableCopy];
+            [result setObject:value forKey:key];
+            return [[USDictionaryWrapper alloc] initWithDictionary:result];
+        } else {
+            return self;
+        }
+    };
+}
+
+- (USDictionaryWrapper *(^)(id))dissoc
+{
+    return ^USDictionaryWrapper *(id key) {
+        if (key) {
+            __block NSMutableDictionary *result = [self.dictionary mutableCopy];
+            [result removeObjectForKey:key];
+            return [[USDictionaryWrapper alloc] initWithDictionary:result];
+        } else {
+            return self;
+        }
+    };
+}
+
 - (USDictionaryWrapper *(^)(UnderscoreDictionaryIteratorBlock))each
 {
     return ^USDictionaryWrapper *(UnderscoreDictionaryIteratorBlock block) {
@@ -92,7 +129,7 @@
 - (USDictionaryWrapper *(^)(UnderscoreDictionaryMapBlock))map
 {
     return ^USDictionaryWrapper *(UnderscoreDictionaryMapBlock block) {
-        NSMutableDictionary *result = [NSMutableDictionary dictionary];
+        NSMutableDictionary *result = [NSMutableDictionary dictionaryWithCapacity:self.dictionary.count];
 
         [self.dictionary enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
             id mapped = block(key, obj);
@@ -101,6 +138,32 @@
                 [result setObject:mapped
                            forKey:key];
             }
+        }];
+
+        return [[USDictionaryWrapper alloc] initWithDictionary:result];
+    };
+}
+
+- (USDictionaryWrapper *(^)(UnderscoreArrayMapBlock))mapKeys
+{
+    return ^USDictionaryWrapper *(UnderscoreArrayMapBlock block) {
+        NSMutableDictionary *result = [NSMutableDictionary dictionaryWithCapacity:self.dictionary.count];
+
+        [self.dictionary enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+            [result setObject:obj forKey:block(key)];
+        }];
+
+        return [[USDictionaryWrapper alloc] initWithDictionary:result];
+    };
+}
+
+- (USDictionaryWrapper *(^)(UnderscoreArrayMapBlock))mapValues
+{
+    return ^USDictionaryWrapper *(UnderscoreArrayMapBlock block) {
+        NSMutableDictionary *result = [NSMutableDictionary dictionary];
+
+        [self.dictionary enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+            [result setObject:block(obj) forKey:key];
         }];
 
         return [[USDictionaryWrapper alloc] initWithDictionary:result];
@@ -182,6 +245,27 @@
 {
     return ^USDictionaryWrapper *(UnderscoreTestBlock test) {
         return self.filterValues(Underscore.negate(test));
+    };
+}
+
+- (USDictionaryWrapper *(^)(NSDictionary *, UnderscoreReduceBlock))mergeWith
+{
+    return ^USDictionaryWrapper *(NSDictionary *other, UnderscoreReduceBlock block) {
+        NSMutableDictionary *result = [NSMutableDictionary dictionaryWithDictionary:self.dictionary];
+        [other enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+            id existing = [result objectForKey:key];
+            if (existing) {
+                id new = block(existing, obj);
+                if (new) {
+                    [result setObject:new forKey:key];
+                } else {
+                    [result removeObjectForKey:key];
+                }
+            } else {
+                [result setObject:obj forKey:key];
+            }
+        }];
+        return [[USDictionaryWrapper alloc] initWithDictionary:result];
     };
 }
 

@@ -7,7 +7,7 @@ DEPENDENCIES:
   - Specta (= 0.1.11)
 
 SPEC CHECKSUMS:
-  Expecta: 99adbb2e366a02796477523bfd426143350d9caf
-  Specta: 82746c6fd70b104c5d37cfbadb7bf15a2cbc4da0
+  Expecta: dcffd524996849acb4bc7fd113b69b9f6b7e6298
+  Specta: aabc082b670a1b569ca0bd25c1efe3cbd82569b3
 
-COCOAPODS: 0.28.0
+COCOAPODS: 0.33.1

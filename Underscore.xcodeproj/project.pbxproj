@@ -31,6 +31,8 @@
 		BCFADFF61837E77000A81EB5 /* USStringWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = BCFADFF11837E77000A81EB5 /* USStringWrapper.h */; };
 		BCFADFF71837E77000A81EB5 /* USStringWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFADFF21837E77000A81EB5 /* USStringWrapper.m */; };
 		BCFADFFC1837EBE600A81EB5 /* UnderscoreStringsSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFADFF91837EBA200A81EB5 /* UnderscoreStringsSpec.m */; };
+		D05901E4195E34B100694E3C /* USDictionaryEntry.h in Headers */ = {isa = PBXBuildFile; fileRef = D05901E2195E34B100694E3C /* USDictionaryEntry.h */; };
+		D05901E5195E34B100694E3C /* USDictionaryEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = D05901E3195E34B100694E3C /* USDictionaryEntry.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +77,8 @@
 		BCFADFF11837E77000A81EB5 /* USStringWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = USStringWrapper.h; path = Strings/USStringWrapper.h; sourceTree = "<group>"; };
 		BCFADFF21837E77000A81EB5 /* USStringWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = USStringWrapper.m; path = Strings/USStringWrapper.m; sourceTree = "<group>"; };
 		BCFADFF91837EBA200A81EB5 /* UnderscoreStringsSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UnderscoreStringsSpec.m; path = Strings/UnderscoreStringsSpec.m; sourceTree = "<group>"; };
+		D05901E2195E34B100694E3C /* USDictionaryEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = USDictionaryEntry.h; sourceTree = "<group>"; };
+		D05901E3195E34B100694E3C /* USDictionaryEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = USDictionaryEntry.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +149,8 @@
 				54996B2115614B220016BE94 /* USDictionaryWrapper.h */,
 				54996B2215614B220016BE94 /* USDictionaryWrapper.m */,
 				54996B2C15614F900016BE94 /* USConstants.h */,
+				D05901E2195E34B100694E3C /* USDictionaryEntry.h */,
+				D05901E3195E34B100694E3C /* USDictionaryEntry.m */,
 				54A3DCCB154DD4BF00387DE3 /* Supporting Files */,
 			);
 			path = Underscore;
@@ -210,6 +216,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				54567D99154DDED4000F38AC /* Underscore.h in Headers */,
+				D05901E4195E34B100694E3C /* USDictionaryEntry.h in Headers */,
 				BCFADFF31837E77000A81EB5 /* Underscore+Strings.h in Headers */,
 				54903D13155FF779006854CB /* USArrayWrapper.h in Headers */,
 				54996B2315614B220016BE94 /* USDictionaryWrapper.h in Headers */,
@@ -352,6 +359,7 @@
 				54903D14155FF779006854CB /* USArrayWrapper.m in Sources */,
 				54996B2415614B220016BE94 /* USDictionaryWrapper.m in Sources */,
 				541D18A615616E2400599033 /* Underscore.m in Sources */,
+				D05901E5195E34B100694E3C /* USDictionaryEntry.m in Sources */,
 				BCFADFF71837E77000A81EB5 /* USStringWrapper.m in Sources */,
 				BCFADFF41837E77000A81EB5 /* Underscore+Strings.m in Sources */,
 				547C44DC15B30ADD004698B8 /* Underscore+Functional.m in Sources */,

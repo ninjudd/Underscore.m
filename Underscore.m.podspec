@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name     = 'Underscore.m'
-  s.version  = '0.2.1'
+  s.version  = '0.2.2-beta'
   s.license  = 'MIT'
   s.summary  = 'A functional toolbelt for Objective-C.'
   s.homepage = 'https://github.com/robb/Underscore.m'

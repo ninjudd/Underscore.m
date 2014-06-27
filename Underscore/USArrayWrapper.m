@@ -118,6 +118,22 @@
     };
 }
 
+- (USArrayWrapper *(^)(NSArray*))into
+{
+    return ^USArrayWrapper *(NSArray *more) {
+        NSArray *result = [self.array arrayByAddingObjectsFromArray:more];
+        return [[USArrayWrapper alloc] initWithArray:result];
+    };
+}
+
+- (USArrayWrapper *(^)(id))conj
+{
+    return ^USArrayWrapper *(id item) {
+        NSArray *result = [self.array arrayByAddingObject:item];
+        return [[USArrayWrapper alloc] initWithArray:result];
+    };
+}
+
 - (NSUInteger (^)(id))indexOf
 {
     return ^NSUInteger (id obj) {
@@ -235,10 +251,44 @@
             }];
         } else {
             [array enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-                [result addObject:block(self.array[idx], obj)]; 
+                [result addObject:block(self.array[idx], obj)];
             }];
         }
         return [[USArrayWrapper alloc] initWithArray:result];
+    };
+}
+
+- (NSDictionary *(^)(UnderscoreArrayMapBlock))mapTo
+{
+    return ^NSDictionary *(UnderscoreArrayMapBlock block) {
+        NSMutableDictionary *result = [NSMutableDictionary dictionaryWithCapacity:self.array.count];
+
+        for (id obj in self.array) {
+            if (![result objectForKey:obj]) {
+                id mapped = block(obj);
+                if (mapped) {
+                    [result setObject:mapped forKey:obj];
+                }
+            }
+        }
+
+        return [NSDictionary dictionaryWithDictionary:result];
+    };
+}
+
+- (NSDictionary *(^)(UnderscoreArrayMapBlock))mapFrom
+{
+    return ^NSDictionary *(UnderscoreArrayMapBlock block) {
+        NSMutableDictionary *result = [NSMutableDictionary dictionaryWithCapacity:self.array.count];
+
+        for (id obj in self.array) {
+            id mapped = block(obj);
+            if (mapped && ![result objectForKey:mapped]) {
+                [result setObject:obj forKey:mapped];
+            }
+        }
+
+        return [NSDictionary dictionaryWithDictionary:result];
     };
 }
 
@@ -256,6 +306,25 @@
     NSOrderedSet *set = [NSOrderedSet orderedSetWithArray:self.array];
 
     return [[USArrayWrapper alloc] initWithArray:[set array]];
+}
+
+- (USArrayWrapper *(^)(UnderscoreArrayMapBlock))uniqOn
+{
+    return ^USArrayWrapper *(UnderscoreArrayMapBlock block) {
+        NSMutableArray *result = [NSMutableArray arrayWithCapacity:self.array.count];
+        NSMutableSet *seen = [NSMutableSet setWithCapacity:self.array.count];
+
+        for (id obj in self.array) {
+            id key = block(obj);
+
+            if (key && ![seen containsObject:key]) {
+                [result addObject:obj];
+                [seen addObject:key];
+            }
+        }
+
+        return [[USArrayWrapper alloc] initWithArray:result];
+    };
 }
 
 - (id (^)(UnderscoreTestBlock))find
@@ -325,6 +394,17 @@
 {
     return ^USArrayWrapper *(UnderscoreSortBlock block) {
         NSArray *result = [self.array sortedArrayUsingComparator:block];
+        return [[USArrayWrapper alloc] initWithArray:result];
+    };
+}
+
+- (USArrayWrapper *(^)(UnderscoreArrayMapBlock))sortBy
+{
+    return ^USArrayWrapper *(UnderscoreArrayMapBlock block) {
+        NSDictionary *sortKeys = self.mapTo(block);
+        NSArray *result = [self.array sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
+            return [[sortKeys objectForKey:a] compare:[sortKeys objectForKey:b]];
+        }];
         return [[USArrayWrapper alloc] initWithArray:result];
     };
 }

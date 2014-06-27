@@ -39,6 +39,9 @@
 + (NSArray *(^)(NSArray *array, NSUInteger n))tail;
 + (NSArray *(^)(NSArray *array, NSUInteger n))drop;
 
++ (NSArray *(^)(NSArray *array, NSArray *more))into;
++ (NSArray *(^)(NSArray *array, id obj))conj;
+
 + (NSUInteger (^)(NSArray *array, id obj))indexOf;
 
 + (NSArray *(^)(NSArray *array))flatten;
@@ -53,9 +56,13 @@
 + (NSArray *(^)(NSArray *array, UnderscoreArrayMapBlock block))arrayMap;
 + (NSArray *(^)(NSArray *firstArray, NSArray *secondArray, UnderscoreArrayZipWithBlock block))arrayZipWith;
 
++ (NSDictionary *(^)(NSArray *array, UnderscoreArrayMapBlock block))mapTo;
++ (NSDictionary *(^)(NSArray *array, UnderscoreArrayMapBlock block))mapFrom;
+
 + (NSArray *(^)(NSArray *array, NSString *keyPath))pluck;
 
 + (NSArray *(^)(NSArray *array))uniq;
++ (NSArray *(^)(NSArray *array, UnderscoreArrayMapBlock block))uniqOn;
 
 + (id (^)(NSArray *array, UnderscoreTestBlock block))find;
 
@@ -66,6 +73,7 @@
 + (BOOL (^)(NSArray *array, UnderscoreTestBlock block))any;
 
 + (NSArray *(^)(NSArray *array, UnderscoreSortBlock block))sort;
++ (NSArray *(^)(NSArray *array, UnderscoreArrayMapBlock block))sortBy;
 
 #pragma mark NSDictionary style methods
 
@@ -73,9 +81,16 @@
 
 + (NSArray *(^)(NSDictionary *dictionary))keys;
 + (NSArray *(^)(NSDictionary *dictionary))values;
++ (NSArray *(^)(NSDictionary *dictionary))dictArray;
+
++ (NSDictionary *(^)(NSDictionary *dictionary, id key, id value))assoc;
++ (NSDictionary *(^)(NSDictionary *dictionary, id key))dissoc;
 
 + (void (^)(NSDictionary *dictionary, UnderscoreDictionaryIteratorBlock block))dictEach;
 + (NSDictionary *(^)(NSDictionary *dictionary, UnderscoreDictionaryMapBlock block))dictMap;
+
++ (NSDictionary *(^)(NSDictionary *dictionary, UnderscoreArrayMapBlock block))mapKeys;
++ (NSDictionary *(^)(NSDictionary *dictionary, UnderscoreArrayMapBlock block))mapValues;
 
 + (NSDictionary *(^)(NSDictionary *dictionary, NSArray *keys))pick;
 
@@ -87,5 +102,7 @@
 
 + (NSDictionary *(^)(NSDictionary *dictionary, UnderscoreTestBlock block))rejectKeys;
 + (NSDictionary *(^)(NSDictionary *dictionary, UnderscoreTestBlock block))rejectValues;
+
++ (NSDictionary *(^)(NSDictionary *dictionary, NSDictionary *other, UnderscoreReduceBlock block))mergeWith;
 
 @end

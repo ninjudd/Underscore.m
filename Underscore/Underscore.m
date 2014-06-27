@@ -115,6 +115,73 @@
     };
 }
 
++ (UnderscoreArrayMapBlock)maybe
+{
+    return ^id (id obj) {
+        if (obj != nil) {
+            return obj;
+        } else {
+            return [NSNull null];
+        }
+    };
+}
+
++ (UnderscoreArrayMapBlock(^)(UnderscoreArrayMapBlock, UnderscoreArrayMapBlock))compose {
+    return ^UnderscoreArrayMapBlock (UnderscoreArrayMapBlock a, UnderscoreArrayMapBlock b) {
+        return ^(id obj) {
+            return a(b(obj));
+        };
+    };
+}
+
++ (UnderscoreArrayMapBlock(^)(id))lookup
+{
+    return ^UnderscoreArrayMapBlock (id item) {
+        if ([item isKindOfClass:[NSDictionary class]]) {
+            return ^id (id key) {
+                return [(NSDictionary*)item objectForKey:key];
+            };
+        } else if ([item isKindOfClass:[NSArray class]]) {
+            return ^id (NSNumber *index) {
+                return [(NSArray*)item objectAtIndex:[index integerValue]];
+            };
+        } else {
+            return ^id (id obj) {
+                return [obj objectForKey:item];
+            };
+        }
+    };
+}
+
++ (UnderscoreArrayMapBlock(^)(id))lookupKeyPath
+{
+    return ^UnderscoreArrayMapBlock (id item) {
+        if ([item isKindOfClass:[NSString class]]) {
+            return ^id (id obj) {
+                return [obj valueForKeyPath:item];
+            };
+        } else {
+            return ^id (NSString *keyPath) {
+                return [item valueForKeyPath:keyPath];
+            };
+        }
+    };
+}
+
++ (UnderscoreArrayMapBlock)key
+{
+    return ^id (USDictionaryEntry *obj) {
+        return [obj key];
+    };
+}
+
++ (UnderscoreArrayMapBlock)value
+{
+    return ^id (USDictionaryEntry *obj) {
+        return [obj value];
+    };
+}
+
 - (id)init
 {
     return [super init];

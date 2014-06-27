@@ -43,6 +43,9 @@
 @property (readonly) USArrayWrapper *(^tail)(NSUInteger n);
 @property (readonly) USArrayWrapper *(^drop)(NSUInteger n);
 
+@property (readonly) USArrayWrapper *(^into)(NSArray *more);
+@property (readonly) USArrayWrapper *(^conj)(id obj);
+
 @property (readonly) NSUInteger (^indexOf)(id obj);
 
 @property (readonly) USArrayWrapper *flatten;
@@ -57,9 +60,13 @@
 @property (readonly) USArrayWrapper *(^map)(UnderscoreArrayMapBlock block);
 @property (readonly) USArrayWrapper *(^zipWith)(NSArray *array, UnderscoreArrayZipWithBlock block);
 
+@property (readonly) NSDictionary *(^mapTo)(UnderscoreArrayMapBlock block);
+@property (readonly) NSDictionary *(^mapFrom)(UnderscoreArrayMapBlock block);
+
 @property (readonly) USArrayWrapper *(^pluck)(NSString *keyPath);
 
 @property (readonly) USArrayWrapper *uniq;
+@property (readonly) USArrayWrapper *(^uniqOn)(UnderscoreArrayMapBlock block);
 
 @property (readonly) id (^find)(UnderscoreTestBlock block);
 
@@ -70,5 +77,6 @@
 @property (readonly) BOOL (^any)(UnderscoreTestBlock block);
 
 @property (readonly) USArrayWrapper *(^sort)(UnderscoreSortBlock block);
+@property (readonly) USArrayWrapper *(^sortBy)(UnderscoreArrayMapBlock block);
 
 @end
