@@ -409,4 +409,16 @@
     };
 }
 
+- (USArrayWrapper *(^)(UnderscoreArrayMapBlock))reverseSortBy
+{
+    return ^USArrayWrapper *(UnderscoreArrayMapBlock block) {
+        NSDictionary *sortKeys = self.mapTo(block);
+        NSLog(@"sortKeys %@", sortKeys);
+        NSArray *result = [self.array sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
+            return [[sortKeys objectForKey:b] compare:[sortKeys objectForKey:a]];
+        }];
+        return [[USArrayWrapper alloc] initWithArray:result];
+    };
+}
+
 @end

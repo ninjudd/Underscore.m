@@ -134,39 +134,60 @@
     };
 }
 
-+ (UnderscoreArrayMapBlock(^)(id))lookup
++ (UnderscoreArrayMapBlock(^)(NSDictionary *))dictionaryLookup
 {
-    return ^UnderscoreArrayMapBlock (id item) {
-        if ([item isKindOfClass:[NSDictionary class]]) {
-            return ^id (id key) {
-                return [(NSDictionary*)item objectForKey:key];
-            };
-        } else if ([item isKindOfClass:[NSArray class]]) {
-            return ^id (NSNumber *index) {
-                return [(NSArray*)item objectAtIndex:[index integerValue]];
-            };
-        } else {
-            return ^id (id obj) {
-                return [obj objectForKey:item];
-            };
-        }
+    return ^UnderscoreArrayMapBlock (NSDictionary *dictionary) {
+        return ^id (id key) {
+            return [dictionary objectForKey:key];
+        };
     };
 }
 
-+ (UnderscoreArrayMapBlock(^)(id))lookupKeyPath
++ (UnderscoreArrayMapBlock(^)(NSArray *))arrayLookup
 {
-    return ^UnderscoreArrayMapBlock (id item) {
-        if ([item isKindOfClass:[NSString class]]) {
-            return ^id (id obj) {
-                return [obj valueForKeyPath:item];
-            };
-        } else {
-            return ^id (NSString *keyPath) {
-                return [item valueForKeyPath:keyPath];
-            };
-        }
+    return ^UnderscoreArrayMapBlock (NSArray *array) {
+        return ^id (NSNumber *index) {
+            return [array objectAtIndex:[index integerValue]];
+        };
     };
 }
+
++ (UnderscoreArrayMapBlock(^)(id))keyLookup
+{
+    return ^UnderscoreArrayMapBlock (id key) {
+        return ^id (id obj) {
+            return [obj objectForKey:key];
+        };
+    };
+}
+
++ (UnderscoreArrayMapBlock(^)(NSString *))keyPathLookup
+{
+    return ^UnderscoreArrayMapBlock (NSString *keyPath) {
+        return ^id (id obj) {
+            return [obj valueForKeyPath:keyPath];
+        };
+    };
+}
+
++ (UnderscoreArrayMapBlock(^)(id))objectLookup
+{
+    return ^UnderscoreArrayMapBlock (id obj) {
+        return ^id (NSString *keyPath) {
+            return [obj valueForKeyPath:keyPath];
+        };
+    };
+}
+
++ (UnderscoreTestBlock(^)(NSSet *))contains
+{
+    return ^UnderscoreTestBlock (NSSet *set) {
+        return ^BOOL (id obj) {
+            return [set containsObject:obj];
+        };
+    };
+}
+
 
 + (UnderscoreArrayMapBlock)key
 {

@@ -48,8 +48,13 @@
 
 + (UnderscoreArrayMapBlock(^)(UnderscoreArrayMapBlock, UnderscoreArrayMapBlock))compose;
 + (UnderscoreArrayMapBlock)maybe;
-+ (UnderscoreArrayMapBlock(^)(id obj))lookup;
-+ (UnderscoreArrayMapBlock(^)(id obj))lookupKeyPath;
+
++ (UnderscoreArrayMapBlock(^)(NSDictionary *dictionary))dictionaryLookup;
++ (UnderscoreArrayMapBlock(^)(NSArray *array))arrayLookup;
++ (UnderscoreArrayMapBlock(^)(id key))keyLookup;
++ (UnderscoreArrayMapBlock(^)(NSString *keyPath))keyPathLookup;
++ (UnderscoreArrayMapBlock(^)(id obj))objectLookup;
++ (UnderscoreTestBlock(^)(NSSet *set))contains;
 
 + (UnderscoreArrayMapBlock)key;
 + (UnderscoreArrayMapBlock)value;

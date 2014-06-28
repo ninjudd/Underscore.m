@@ -19,9 +19,33 @@
     return self;
 }
 
+- (NSString *)description {
+    return [NSString stringWithFormat:@"(%@: %@)", self.key, self.value];
+}
+
 - (instancetype)copyWithZone:(NSZone *)zone
 {
     return [[[self class] alloc] initWithKey:[self.key copyWithZone:zone] value:[self.value copyWithZone:zone]];
+}
+
+- (BOOL)isEqualToUSDictionaryEntry:(USDictionaryEntry *)other {
+    if (!other) return NO;
+
+    return ((!self.key   && !other.key)   || [self.key   isEqual:other.key]) &&
+           ((!self.value && !other.value) || [self.value isEqual:other.value]);
+}
+
+#pragma mark - NSObject
+
+- (BOOL)isEqual:(id)object {
+    if (self == object) return YES;
+    if (![object isKindOfClass:[USDictionaryEntry class]]) return NO;
+
+    return [self isEqualToUSDictionaryEntry:(USDictionaryEntry *)object];
+}
+
+- (NSUInteger)hash {
+    return [self.key hash] ^ [self.value hash];
 }
 
 @end

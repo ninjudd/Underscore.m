@@ -74,6 +74,7 @@
 
 + (NSArray *(^)(NSArray *array, UnderscoreSortBlock block))sort;
 + (NSArray *(^)(NSArray *array, UnderscoreArrayMapBlock block))sortBy;
++ (NSArray *(^)(NSArray *array, UnderscoreArrayMapBlock block))reverseSortBy;
 
 #pragma mark NSDictionary style methods
 

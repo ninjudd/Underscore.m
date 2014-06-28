@@ -78,5 +78,6 @@
 
 @property (readonly) USArrayWrapper *(^sort)(UnderscoreSortBlock block);
 @property (readonly) USArrayWrapper *(^sortBy)(UnderscoreArrayMapBlock block);
+@property (readonly) USArrayWrapper *(^reverseSortBy)(UnderscoreArrayMapBlock block);
 
 @end
