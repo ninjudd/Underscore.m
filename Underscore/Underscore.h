@@ -47,6 +47,7 @@
 + (UnderscoreSortBlock)compare;
 
 + (UnderscoreArrayMapBlock(^)(UnderscoreArrayMapBlock, UnderscoreArrayMapBlock))compose;
++ (UnderscoreArrayMapBlock(^)(NSArray *blocks))juxt;
 + (UnderscoreArrayMapBlock)maybe;
 
 + (UnderscoreArrayMapBlock(^)(NSDictionary *dictionary))dictionaryLookup;

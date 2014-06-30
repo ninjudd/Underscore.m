@@ -402,9 +402,11 @@
 {
     return ^USArrayWrapper *(UnderscoreArrayMapBlock block) {
         NSDictionary *sortKeys = self.mapTo(block);
+
         NSArray *result = [self.array sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
             return [[sortKeys objectForKey:a] compare:[sortKeys objectForKey:b]];
         }];
+
         return [[USArrayWrapper alloc] initWithArray:result];
     };
 }
@@ -413,10 +415,10 @@
 {
     return ^USArrayWrapper *(UnderscoreArrayMapBlock block) {
         NSDictionary *sortKeys = self.mapTo(block);
-        NSLog(@"sortKeys %@", sortKeys);
         NSArray *result = [self.array sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
             return [[sortKeys objectForKey:b] compare:[sortKeys objectForKey:a]];
         }];
+
         return [[USArrayWrapper alloc] initWithArray:result];
     };
 }

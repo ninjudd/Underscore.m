@@ -134,6 +134,17 @@
     };
 }
 
++ (UnderscoreArrayMapBlock(^)(NSArray *))juxt
+{
+    return ^UnderscoreArrayMapBlock (NSArray *blocks) {
+        return ^id (id obj) {
+            return Underscore.arrayMap(blocks, ^(UnderscoreArrayMapBlock block) {
+                return block(obj);
+            });
+        };
+    };
+}
+
 + (UnderscoreArrayMapBlock(^)(NSDictionary *))dictionaryLookup
 {
     return ^UnderscoreArrayMapBlock (NSDictionary *dictionary) {
