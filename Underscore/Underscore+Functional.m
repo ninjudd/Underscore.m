@@ -177,6 +177,13 @@
     };
 }
 
++ (NSDictionary *(^)(NSArray *array, UnderscoreArrayMapBlock block))indexBy
+{
+    return ^(NSArray *array, UnderscoreArrayMapBlock block) {
+        return Underscore.array(array).indexBy(block);
+    };
+}
+
 + (NSArray *(^)(NSArray *, NSString *))pluck
 {
     return ^(NSArray *array, NSString *keyPath) {

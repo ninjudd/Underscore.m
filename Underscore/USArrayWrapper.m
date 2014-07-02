@@ -121,8 +121,12 @@
 - (USArrayWrapper *(^)(NSArray*))into
 {
     return ^USArrayWrapper *(NSArray *more) {
-        NSArray *result = [self.array arrayByAddingObjectsFromArray:more];
-        return [[USArrayWrapper alloc] initWithArray:result];
+        if (more) {
+            NSArray *result = [self.array arrayByAddingObjectsFromArray:more];
+            return [[USArrayWrapper alloc] initWithArray:result];
+        } else {
+            return self;
+        }
     };
 }
 
@@ -286,6 +290,31 @@
             if (mapped && ![result objectForKey:mapped]) {
                 [result setObject:obj forKey:mapped];
             }
+        }
+
+        return [NSDictionary dictionaryWithDictionary:result];
+    };
+}
+
+- (NSDictionary *(^)(UnderscoreArrayMapBlock))indexBy
+{
+    return ^NSDictionary *(UnderscoreArrayMapBlock block) {
+        NSMutableDictionary *result = [NSMutableDictionary dictionaryWithCapacity:self.array.count];
+
+        for (id obj in self.array) {
+            id index = block(obj);
+            for (id key in index) {
+                NSMutableArray *values = [result objectForKey:key];
+                if (!values) {
+                    values = [NSMutableArray new];
+                    [result setObject:values forKey:key];
+                }
+                [values addObject:obj];
+            }
+        }
+
+        for (id key in result.allKeys) { // Make all value arrays immutable.
+            [result setObject:[NSArray arrayWithArray:[result objectForKey:key]] forKey:key];
         }
 
         return [NSDictionary dictionaryWithDictionary:result];
