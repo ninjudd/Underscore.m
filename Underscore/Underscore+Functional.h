@@ -54,6 +54,7 @@
 
 + (void (^)(NSArray *array, UnderscoreArrayIteratorBlock block))arrayEach;
 + (NSArray *(^)(NSArray *array, UnderscoreArrayMapBlock block))arrayMap;
++ (NSArray *(^)(NSArray *array, UnderscoreArrayMapBlock block))mapCat;
 + (NSArray *(^)(NSArray *firstArray, NSArray *secondArray, UnderscoreArrayZipWithBlock block))arrayZipWith;
 
 + (NSDictionary *(^)(NSArray *array, UnderscoreArrayMapBlock block))mapTo;

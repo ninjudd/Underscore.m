@@ -245,6 +245,21 @@
     };
 }
 
+- (USArrayWrapper *(^)(UnderscoreArrayMapBlock))mapCat
+{
+    return ^USArrayWrapper *(UnderscoreArrayMapBlock block) {
+        NSMutableArray *result = [NSMutableArray arrayWithCapacity:self.array.count];
+
+        for (id obj in self.array) {
+            for (id item in block(obj)) {
+                [result addObject:item];
+            }
+        }
+
+        return [[USArrayWrapper alloc] initWithArray:result];
+    };
+}
+
 - (USArrayWrapper *(^)(NSArray *array, UnderscoreArrayZipWithBlock block))zipWith
 {
     return ^USArrayWrapper *(NSArray *array, UnderscoreArrayZipWithBlock block) {

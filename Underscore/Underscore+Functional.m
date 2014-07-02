@@ -156,6 +156,13 @@
     };
 }
 
++ (NSArray *(^)(NSArray *array, UnderscoreArrayMapBlock block))mapCat
+{
+    return ^(NSArray *array, UnderscoreArrayMapBlock block) {
+        return Underscore.array(array).mapCat(block).unwrap;
+    };
+}
+
 + (NSArray *(^)(NSArray *firstArray, NSArray *secondArray, UnderscoreArrayZipWithBlock block))arrayZipWith
 {
     return ^(NSArray *firstArray, NSArray *secondArray, UnderscoreArrayZipWithBlock block) {
