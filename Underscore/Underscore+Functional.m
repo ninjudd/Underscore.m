@@ -191,6 +191,13 @@
     };
 }
 
++ (NSDictionary *(^)(NSArray *))frequencies
+{
+    return ^(NSArray *array) {
+        return Underscore.array(array).frequencies;
+    };
+}
+
 + (NSArray *(^)(NSArray *, NSString *))pluck
 {
     return ^(NSArray *array, NSString *keyPath) {

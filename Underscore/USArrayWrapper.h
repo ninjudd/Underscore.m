@@ -65,6 +65,8 @@
 @property (readonly) NSDictionary *(^mapFrom)(UnderscoreArrayMapBlock block);
 @property (readonly) NSDictionary *(^indexBy)(UnderscoreArrayMapBlock block);
 
+@property (readonly) NSDictionary *frequencies;
+
 @property (readonly) USArrayWrapper *(^pluck)(NSString *keyPath);
 
 @property (readonly) USArrayWrapper *uniq;

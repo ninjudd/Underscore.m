@@ -61,6 +61,8 @@
 + (NSDictionary *(^)(NSArray *array, UnderscoreArrayMapBlock block))mapFrom;
 + (NSDictionary *(^)(NSArray *array, UnderscoreArrayMapBlock block))indexBy;
 
++ (NSDictionary *(^)(NSArray *))frequencies;
+
 + (NSArray *(^)(NSArray *array, NSString *keyPath))pluck;
 
 + (NSArray *(^)(NSArray *array))uniq;

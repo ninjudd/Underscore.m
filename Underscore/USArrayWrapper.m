@@ -336,6 +336,17 @@
     };
 }
 
+- (NSDictionary *)frequencies
+{
+    NSMutableDictionary *counts = [NSMutableDictionary dictionaryWithCapacity:self.array.count];
+    for (id object in self.array) {
+        NSNumber *count = [counts objectForKey:object];
+        if (!count) count = @0;
+        [counts setObject:[NSNumber numberWithInt:[count intValue] + 1] forKey:object];
+    }
+    return [NSDictionary dictionaryWithDictionary:counts];
+}
+
 - (USArrayWrapper *(^)(NSString *))pluck
 {
     return ^USArrayWrapper *(NSString *keyPath) {
