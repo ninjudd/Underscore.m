@@ -277,6 +277,24 @@
     };
 }
 
+- (USArrayWrapper *(^)(NSUInteger n))partition
+{
+    return ^USArrayWrapper *(NSUInteger num) {
+        NSMutableArray *result = [NSMutableArray arrayWithCapacity:self.array.count/num];
+        __block NSMutableArray *group = nil;
+        [self.array enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            if (idx % num == 0) {
+                if (group) [result addObject:[NSArray arrayWithArray:group]];
+                group = [NSMutableArray arrayWithCapacity:num];
+            }
+            [group addObject:obj];
+        }];
+        if (group) [result addObject:[NSArray arrayWithArray:group]];
+
+        return [[USArrayWrapper alloc] initWithArray:result];
+    };
+}
+
 - (NSDictionary *(^)(UnderscoreArrayMapBlock))mapTo
 {
     return ^NSDictionary *(UnderscoreArrayMapBlock block) {

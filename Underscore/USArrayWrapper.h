@@ -61,6 +61,8 @@
 @property (readonly) USArrayWrapper *(^mapCat)(UnderscoreArrayMapBlock block);
 @property (readonly) USArrayWrapper *(^zipWith)(NSArray *array, UnderscoreArrayZipWithBlock block);
 
+@property (readonly) USArrayWrapper *(^partition)(NSUInteger num);
+
 @property (readonly) NSDictionary *(^mapTo)(UnderscoreArrayMapBlock block);
 @property (readonly) NSDictionary *(^mapFrom)(UnderscoreArrayMapBlock block);
 @property (readonly) NSDictionary *(^indexBy)(UnderscoreArrayMapBlock block);

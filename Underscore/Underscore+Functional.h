@@ -57,6 +57,8 @@
 + (NSArray *(^)(NSArray *array, UnderscoreArrayMapBlock block))mapCat;
 + (NSArray *(^)(NSArray *firstArray, NSArray *secondArray, UnderscoreArrayZipWithBlock block))arrayZipWith;
 
++ (NSArray *(^)(NSArray *array, NSUInteger num))partition;
+
 + (NSDictionary *(^)(NSArray *array, UnderscoreArrayMapBlock block))mapTo;
 + (NSDictionary *(^)(NSArray *array, UnderscoreArrayMapBlock block))mapFrom;
 + (NSDictionary *(^)(NSArray *array, UnderscoreArrayMapBlock block))indexBy;

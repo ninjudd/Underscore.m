@@ -170,6 +170,13 @@
     };
 }
 
++ (NSArray *(^)(NSArray *array, NSUInteger num))partition
+{
+    return ^(NSArray *array, NSUInteger num) {
+        return Underscore.array(array).partition(num).unwrap;
+    };
+}
+
 + (NSDictionary *(^)(NSArray *array, UnderscoreArrayMapBlock block))mapTo
 {
     return ^(NSArray *array, UnderscoreArrayMapBlock block) {
