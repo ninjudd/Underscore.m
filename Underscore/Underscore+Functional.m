@@ -93,6 +93,13 @@
     };
 }
 
++ (NSArray *(^)(NSArray *))cat
+{
+    return ^(NSArray *array) {
+        return Underscore.array(array).cat.unwrap;
+    };
+}
+
 + (NSArray *(^)(NSArray *))flatten
 {
     return ^(NSArray *array) {
@@ -167,6 +174,13 @@
 {
     return ^(NSArray *firstArray, NSArray *secondArray, UnderscoreArrayZipWithBlock block) {
         return Underscore.array(firstArray).zipWith(secondArray, block).unwrap;
+    };
+}
+
++ (NSArray *(^)(NSArray *firstArray, NSArray *secondArray))interleave
+{
+    return ^(NSArray *firstArray, NSArray *secondArray) {
+        return Underscore.array(firstArray).interleave(secondArray).unwrap;
     };
 }
 

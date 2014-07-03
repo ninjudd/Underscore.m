@@ -44,6 +44,7 @@
 
 + (NSUInteger (^)(NSArray *array, id obj))indexOf;
 
++ (NSArray *(^)(NSArray *array))cat;
 + (NSArray *(^)(NSArray *array))flatten;
 + (NSArray *(^)(NSArray *array, NSArray *values))without;
 
@@ -57,6 +58,7 @@
 + (NSArray *(^)(NSArray *array, UnderscoreArrayMapBlock block))mapCat;
 + (NSArray *(^)(NSArray *firstArray, NSArray *secondArray, UnderscoreArrayZipWithBlock block))arrayZipWith;
 
++ (NSArray *(^)(NSArray *firstArray, NSArray *secondArray))interleave;
 + (NSArray *(^)(NSArray *array, NSUInteger num))partition;
 
 + (NSDictionary *(^)(NSArray *array, UnderscoreArrayMapBlock block))mapTo;

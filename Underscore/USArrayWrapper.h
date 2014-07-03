@@ -48,6 +48,7 @@
 
 @property (readonly) NSUInteger (^indexOf)(id obj);
 
+@property (readonly) USArrayWrapper *cat;
 @property (readonly) USArrayWrapper *flatten;
 @property (readonly) USArrayWrapper *(^without)(NSArray *values);
 
@@ -61,6 +62,7 @@
 @property (readonly) USArrayWrapper *(^mapCat)(UnderscoreArrayMapBlock block);
 @property (readonly) USArrayWrapper *(^zipWith)(NSArray *array, UnderscoreArrayZipWithBlock block);
 
+@property (readonly) USArrayWrapper *(^interleave)(NSArray *array);
 @property (readonly) USArrayWrapper *(^partition)(NSUInteger num);
 
 @property (readonly) NSDictionary *(^mapTo)(UnderscoreArrayMapBlock block);
