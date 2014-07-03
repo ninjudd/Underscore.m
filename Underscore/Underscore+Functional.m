@@ -259,6 +259,20 @@
     };
 }
 
++ (id(^)(NSArray *))min
+{
+    return ^(NSArray *array) {
+        return Underscore.array(array).min;
+    };
+}
+
++ (id(^)(NSArray *))max
+{
+    return ^(NSArray *array) {
+        return Underscore.array(array).max;
+    };
+}
+
 #pragma mark NSDictionary shortcuts
 
 + (USDictionaryWrapper *(^)(NSDictionary *))dict

@@ -478,4 +478,26 @@
     };
 }
 
+- (id)min
+{
+    id min = nil;
+    for (id object in self.array) {
+        if (!min || [min compare:object] == NSOrderedDescending) {
+            min = object;
+        }
+    }
+    return min;
+}
+
+- (id)max
+{
+    id max = nil;
+    for (id object in self.array) {
+        if (!max || [max compare:object] == NSOrderedAscending) {
+            max = object;
+        }
+    }
+    return max;
+}
+
 @end

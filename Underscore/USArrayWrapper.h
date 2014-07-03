@@ -84,4 +84,7 @@
 @property (readonly) USArrayWrapper *(^sortBy)(UnderscoreArrayMapBlock block);
 @property (readonly) USArrayWrapper *(^reverseSortBy)(UnderscoreArrayMapBlock block);
 
+@property (readonly) id min;
+@property (readonly) id max;
+
 @end

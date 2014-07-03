@@ -80,6 +80,9 @@
 + (NSArray *(^)(NSArray *array, UnderscoreArrayMapBlock block))sortBy;
 + (NSArray *(^)(NSArray *array, UnderscoreArrayMapBlock block))reverseSortBy;
 
++ (id(^)(NSArray *))min;
++ (id(^)(NSArray *))max;
+
 #pragma mark NSDictionary style methods
 
 + (USDictionaryWrapper *(^)(NSDictionary *dictionary))dict;
