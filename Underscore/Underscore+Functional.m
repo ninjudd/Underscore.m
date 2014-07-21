@@ -135,6 +135,13 @@
     };
 }
 
++ (NSArray *(^)(NSArray *))reverse
+{
+    return ^(NSArray *array) {
+        return Underscore.array(array).reverse.unwrap;
+    };
+}
+
 +(id (^)(NSArray *, id, UnderscoreReduceBlock))reduce
 {
     return ^(NSArray *array, id memo, UnderscoreReduceBlock block) {

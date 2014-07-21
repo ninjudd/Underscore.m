@@ -49,6 +49,7 @@
 + (NSArray *(^)(NSArray *array, NSArray *values))without;
 
 + (NSArray *(^)(NSArray *array))shuffle;
++ (NSArray *(^)(NSArray *array))reverse;
 
 + (id (^)(NSArray *array, id memo, UnderscoreReduceBlock block))reduce;
 + (id (^)(NSArray *array, id memo, UnderscoreReduceBlock block))reduceRight;

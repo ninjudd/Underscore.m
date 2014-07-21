@@ -206,6 +206,18 @@
     return [[USArrayWrapper alloc] initWithArray:result];
 }
 
+- (USArrayWrapper *)reverse
+{
+    NSMutableArray *result = [NSMutableArray arrayWithCapacity:self.array.count];
+
+    for (NSInteger i = result.count - 1; i > 0; i--) {
+        [result addObject:[self.array objectAtIndex:i]];
+    }
+
+    return [[USArrayWrapper alloc] initWithArray:result];
+}
+
+
 - (id (^)(id, UnderscoreReduceBlock))reduce
 {
     return ^USArrayWrapper *(id memo, UnderscoreReduceBlock function) {
@@ -502,10 +514,8 @@
 - (USArrayWrapper *(^)(UnderscoreArrayMapBlock))sortBy
 {
     return ^USArrayWrapper *(UnderscoreArrayMapBlock block) {
-        NSDictionary *sortKeys = self.mapTo(block);
-
         NSArray *result = [self.array sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
-            return [[sortKeys objectForKey:a] compare:[sortKeys objectForKey:b]];
+            return [block(a) compare:block(b)];
         }];
 
         return [[USArrayWrapper alloc] initWithArray:result];
@@ -515,9 +525,8 @@
 - (USArrayWrapper *(^)(UnderscoreArrayMapBlock))reverseSortBy
 {
     return ^USArrayWrapper *(UnderscoreArrayMapBlock block) {
-        NSDictionary *sortKeys = self.mapTo(block);
         NSArray *result = [self.array sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
-            return [[sortKeys objectForKey:b] compare:[sortKeys objectForKey:a]];
+            return [block(b) compare:block(a)];
         }];
 
         return [[USArrayWrapper alloc] initWithArray:result];

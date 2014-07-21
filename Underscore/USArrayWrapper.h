@@ -53,6 +53,7 @@
 @property (readonly) USArrayWrapper *(^without)(NSArray *values);
 
 @property (readonly) USArrayWrapper *shuffle;
+@property (readonly) USArrayWrapper *reverse;
 
 @property (readonly) id (^reduce)(id memo, UnderscoreReduceBlock block);
 @property (readonly) id (^reduceRight)(id memo, UnderscoreReduceBlock block);
