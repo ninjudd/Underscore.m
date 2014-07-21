@@ -34,6 +34,7 @@
 
 + (id (^)(NSArray *))first;
 + (id (^)(NSArray *))last;
++ (NSArray *(^)(NSArray *))rest;
 
 + (NSArray *(^)(NSArray *array, NSUInteger n))head;
 + (NSArray *(^)(NSArray *array, NSUInteger n))tail;

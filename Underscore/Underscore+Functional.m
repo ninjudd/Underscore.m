@@ -51,6 +51,13 @@
     };
 }
 
++ (NSArray *(^)(NSArray *))rest
+{
+    return ^(NSArray *array) {
+        return Underscore.array(array).rest.unwrap;
+    };
+}
+
 + (NSArray *(^)(NSArray *, NSUInteger))head
 {
     return ^(NSArray *array, NSUInteger n) {
