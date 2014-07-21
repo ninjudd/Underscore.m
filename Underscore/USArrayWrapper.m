@@ -209,9 +209,10 @@
 - (USArrayWrapper *)reverse
 {
     NSMutableArray *result = [NSMutableArray arrayWithCapacity:self.array.count];
+    NSEnumerator *enumerator = [self.array reverseObjectEnumerator];
 
-    for (NSInteger i = result.count - 1; i > 0; i--) {
-        [result addObject:[self.array objectAtIndex:i]];
+    for (id object in enumerator) {
+        [result addObject:object];
     }
 
     return [[USArrayWrapper alloc] initWithArray:result];
