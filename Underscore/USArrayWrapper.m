@@ -84,6 +84,11 @@
     return self.drop(1);
 }
 
+- (USArrayWrapper*)butLast
+{
+    return self.head(self.array.count - 1);
+}
+
 - (USArrayWrapper *(^)(NSUInteger))head
 {
     return ^USArrayWrapper *(NSUInteger count) {

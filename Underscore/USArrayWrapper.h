@@ -39,6 +39,7 @@
 @property (readonly) id first;
 @property (readonly) id last;
 @property (readonly) USArrayWrapper *rest;
+@property (readonly) USArrayWrapper *butLast;
 
 @property (readonly) USArrayWrapper *(^head)(NSUInteger n);
 @property (readonly) USArrayWrapper *(^tail)(NSUInteger n);
