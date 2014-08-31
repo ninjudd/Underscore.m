@@ -65,6 +65,7 @@
 @property (readonly) USArrayWrapper *(^mapCat)(UnderscoreArrayMapBlock block);
 @property (readonly) USArrayWrapper *(^zipWith)(NSArray *array, UnderscoreArrayZipWithBlock block);
 
+@property (readonly) USArrayWrapper *(^interpose)(NSArray *array);
 @property (readonly) USArrayWrapper *(^interleave)(NSArray *array);
 @property (readonly) USArrayWrapper *(^partition)(NSUInteger num);
 

@@ -198,6 +198,13 @@
     };
 }
 
++ (NSArray *(^)(NSArray *firstArray, NSArray *secondArray))interpose
+{
+    return ^(NSArray *firstArray, NSArray *secondArray) {
+        return Underscore.array(firstArray).interpose(secondArray).unwrap;
+    };
+}
+
 + (NSArray *(^)(NSArray *firstArray, NSArray *secondArray))interleave
 {
     return ^(NSArray *firstArray, NSArray *secondArray) {

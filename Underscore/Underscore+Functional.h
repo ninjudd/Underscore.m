@@ -61,6 +61,7 @@
 + (NSArray *(^)(NSArray *array, UnderscoreArrayMapBlock block))mapCat;
 + (NSArray *(^)(NSArray *firstArray, NSArray *secondArray, UnderscoreArrayZipWithBlock block))arrayZipWith;
 
++ (NSArray *(^)(NSArray *firstArray, NSArray *secondArray))interpose;
 + (NSArray *(^)(NSArray *firstArray, NSArray *secondArray))interleave;
 + (NSArray *(^)(NSArray *array, NSUInteger num))partition;
 

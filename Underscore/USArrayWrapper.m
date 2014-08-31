@@ -311,10 +311,24 @@
     };
 }
 
+- (USArrayWrapper *(^)(NSArray *array))interpose
+{
+    return ^USArrayWrapper *(NSArray *array) {
+        NSMutableArray *result = [NSMutableArray arrayWithCapacity:self.array.count * (array.count + 1)];
+        for (NSUInteger idx = 0; idx < self.array.count; idx++) {
+            [result addObject:self.array[idx]];
+            if (idx != self.array.count - 1) {
+                [result addObjectsFromArray:array];
+            }
+        }
+        return [[USArrayWrapper alloc] initWithArray:result];
+    };
+}
+
 - (USArrayWrapper *(^)(NSArray *array))interleave
 {
     return ^USArrayWrapper *(NSArray *array) {
-        NSMutableArray *result = [NSMutableArray arrayWithCapacity:self.array.count];
+        NSMutableArray *result = [NSMutableArray arrayWithCapacity:self.array.count + array.count];
         NSUInteger max = MAX(self.array.count, array.count);
         for (NSUInteger idx = 0; idx < max; idx++) {
             if (idx < self.array.count) {
