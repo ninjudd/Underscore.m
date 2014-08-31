@@ -45,6 +45,9 @@
 @property (readonly) USArrayWrapper *(^tail)(NSUInteger n);
 @property (readonly) USArrayWrapper *(^drop)(NSUInteger n);
 
+@property (readonly) USArrayWrapper *(^takeWhile)(UnderscoreTestBlock block);
+@property (readonly) USArrayWrapper *(^dropWhile)(UnderscoreTestBlock block);
+
 @property (readonly) USArrayWrapper *(^into)(NSArray *more);
 @property (readonly) USArrayWrapper *(^conj)(id obj);
 

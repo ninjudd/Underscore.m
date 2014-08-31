@@ -41,6 +41,9 @@
 + (NSArray *(^)(NSArray *array, NSUInteger n))tail;
 + (NSArray *(^)(NSArray *array, NSUInteger n))drop;
 
++ (NSArray *(^)(NSArray *, UnderscoreTestBlock))takeWhile;
++ (NSArray *(^)(NSArray *, UnderscoreTestBlock))dropWhile;
+
 + (NSArray *(^)(NSArray *array, NSArray *more))into;
 + (NSArray *(^)(NSArray *array, id obj))conj;
 

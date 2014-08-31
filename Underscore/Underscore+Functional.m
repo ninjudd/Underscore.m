@@ -86,6 +86,19 @@
     };
 }
 
++ (NSArray *(^)(NSArray *, UnderscoreTestBlock))takeWhile
+{
+    return ^(NSArray *array, UnderscoreTestBlock block) {
+        return Underscore.array(array).takeWhile(block).unwrap;
+    };
+}
++ (NSArray *(^)(NSArray *, UnderscoreTestBlock))dropWhile
+{
+    return ^(NSArray *array, UnderscoreTestBlock block) {
+        return Underscore.array(array).dropWhile(block).unwrap;
+    };
+}
+
 + (NSArray *(^)(NSArray *, NSArray *))into
 {
     return ^(NSArray *array, NSArray *more) {

@@ -128,6 +128,30 @@
     };
 }
 
+- (USArrayWrapper *(^)(UnderscoreTestBlock))takeWhile
+{
+    return ^USArrayWrapper *(UnderscoreTestBlock test) {
+        NSInteger index = 0;
+        for (id object in self.array) {
+            if (!test(object)) break;
+            index++;
+        }
+        return self.head(index);
+    };
+}
+
+- (USArrayWrapper *(^)(UnderscoreTestBlock))dropWhile
+{
+    return ^USArrayWrapper *(UnderscoreTestBlock test) {
+        NSInteger count = 0;
+        for (id object in self.array) {
+            if (!test(object)) break;
+            count++;
+        }
+        return self.drop(count);
+    };
+}
+
 - (USArrayWrapper *(^)(NSArray*))into
 {
     return ^USArrayWrapper *(NSArray *more) {
