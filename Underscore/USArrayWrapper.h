@@ -75,6 +75,7 @@
 @property (readonly) NSDictionary *(^mapTo)(UnderscoreArrayMapBlock block);
 @property (readonly) NSDictionary *(^mapFrom)(UnderscoreArrayMapBlock block);
 @property (readonly) NSDictionary *(^indexBy)(UnderscoreArrayMapBlock block);
+@property (readonly) NSDictionary *dict;
 
 @property (readonly) NSDictionary *frequencies;
 

@@ -71,6 +71,7 @@
 + (NSDictionary *(^)(NSArray *array, UnderscoreArrayMapBlock block))mapTo;
 + (NSDictionary *(^)(NSArray *array, UnderscoreArrayMapBlock block))mapFrom;
 + (NSDictionary *(^)(NSArray *array, UnderscoreArrayMapBlock block))indexBy;
++ (NSDictionary *(^)(NSArray *))arrayDict;
 
 + (NSDictionary *(^)(NSArray *))frequencies;
 

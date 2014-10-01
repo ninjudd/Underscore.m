@@ -253,6 +253,13 @@
     };
 }
 
++ (NSDictionary *(^)(NSArray *))arrayDict
+{
+    return ^(NSArray *array) {
+        return Underscore.array(array).dict;
+    };
+}
+
 + (NSDictionary *(^)(NSArray *))frequencies
 {
     return ^(NSArray *array) {

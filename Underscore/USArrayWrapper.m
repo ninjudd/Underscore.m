@@ -443,6 +443,15 @@
     };
 }
 
+- (NSDictionary *)dict
+{
+    NSMutableDictionary *result = [NSMutableDictionary dictionaryWithCapacity:self.array.count];
+    for (USDictionaryEntry *entry in self.array) {
+        [result setObject:entry.value forKey:entry.key];
+    }
+    return [NSDictionary dictionaryWithDictionary:result];
+}
+
 - (NSDictionary *)frequencies
 {
     NSMutableDictionary *counts = [NSMutableDictionary dictionaryWithCapacity:self.array.count];
