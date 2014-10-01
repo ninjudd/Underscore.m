@@ -317,7 +317,7 @@
 + (NSArray *(^)(NSArray *, UnderscoreArrayMapBlock))reverseSortBy
 {
     return ^(NSArray *array, UnderscoreArrayMapBlock block) {
-        return Underscore.array(array).sortBy(block).unwrap;
+        return Underscore.array(array).reverseSortBy(block).unwrap;
     };
 }
 
