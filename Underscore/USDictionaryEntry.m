@@ -10,6 +10,10 @@
 
 @implementation USDictionaryEntry
 
++ (instancetype)entryWithKey:(id)key value:(id)value {
+    return [[self alloc] initWithKey:key value:value];
+}
+
 - (instancetype)initWithKey:(id)key value:(id)value {
     self = [super init];
     if (self) {

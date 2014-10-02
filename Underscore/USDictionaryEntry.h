@@ -14,5 +14,6 @@
 @property (readonly) id value;
 
 - (instancetype)initWithKey:(id)key value:(id)value;
++ (instancetype)entryWithKey:(id)key value:(id)value;
 
 @end
