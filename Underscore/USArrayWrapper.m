@@ -463,6 +463,17 @@
     return [NSDictionary dictionaryWithDictionary:counts];
 }
 
+- (NSDictionary *)positions
+{
+    NSMutableDictionary *positions = [NSMutableDictionary dictionaryWithCapacity:self.array.count];
+    [self.array enumerateObjectsUsingBlock:^(id object, NSUInteger i, BOOL *stop) {
+        if (![positions objectForKey:object]) {
+            [positions setObject:@(i) forKey:object];
+        }
+    }];
+    return [NSDictionary dictionaryWithDictionary:positions];
+}
+
 - (USArrayWrapper *(^)(NSString *))pluck
 {
     return ^USArrayWrapper *(NSString *keyPath) {

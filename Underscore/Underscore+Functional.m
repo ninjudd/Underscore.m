@@ -267,6 +267,13 @@
     };
 }
 
++ (NSDictionary *(^)(NSArray *))positions
+{
+    return ^(NSArray *array) {
+        return Underscore.array(array).positions;
+    };
+}
+
 + (NSArray *(^)(NSArray *, NSString *))pluck
 {
     return ^(NSArray *array, NSString *keyPath) {

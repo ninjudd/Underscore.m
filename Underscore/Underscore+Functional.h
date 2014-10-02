@@ -74,6 +74,7 @@
 + (NSDictionary *(^)(NSArray *))arrayDict;
 
 + (NSDictionary *(^)(NSArray *))frequencies;
++ (NSDictionary *(^)(NSArray *))positions;
 
 + (NSArray *(^)(NSArray *array, NSString *keyPath))pluck;
 

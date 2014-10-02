@@ -78,6 +78,7 @@
 @property (readonly) NSDictionary *dict;
 
 @property (readonly) NSDictionary *frequencies;
+@property (readonly) NSDictionary *positions;
 
 @property (readonly) USArrayWrapper *(^pluck)(NSString *keyPath);
 
