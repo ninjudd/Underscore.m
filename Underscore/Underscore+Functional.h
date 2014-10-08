@@ -40,6 +40,7 @@
 + (NSArray *(^)(NSArray *array, NSUInteger n))head;
 + (NSArray *(^)(NSArray *array, NSUInteger n))tail;
 + (NSArray *(^)(NSArray *array, NSUInteger n))drop;
++ (NSArray *(^)(NSArray *array, NSUInteger n))dropLast;
 
 + (NSArray *(^)(NSArray *, UnderscoreTestBlock))takeWhile;
 + (NSArray *(^)(NSArray *, UnderscoreTestBlock))dropWhile;

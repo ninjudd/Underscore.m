@@ -128,6 +128,17 @@
     };
 }
 
+- (USArrayWrapper *(^)(NSUInteger))dropLast
+{
+    return ^USArrayWrapper *(NSUInteger count) {
+        NSUInteger length    = count < self.array.count ? self.array.count - count : 0;
+        NSRange    range     = NSMakeRange(0, length);
+        NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:range];
+        NSArray *result      = [self.array objectsAtIndexes:indexSet];
+        return [[USArrayWrapper alloc] initWithArray:result];
+    };
+}
+
 - (USArrayWrapper *(^)(UnderscoreTestBlock))takeWhile
 {
     return ^USArrayWrapper *(UnderscoreTestBlock test) {

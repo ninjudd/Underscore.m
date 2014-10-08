@@ -86,6 +86,13 @@
     };
 }
 
++ (NSArray *(^)(NSArray *, NSUInteger))dropLast
+{
+    return ^(NSArray *array, NSUInteger n) {
+        return Underscore.array(array).dropLast(n).unwrap;
+    };
+}
+
 + (NSArray *(^)(NSArray *, UnderscoreTestBlock))takeWhile
 {
     return ^(NSArray *array, UnderscoreTestBlock block) {
