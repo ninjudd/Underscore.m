@@ -42,6 +42,7 @@
 
 + (USArrayWrapper *)wrap:(NSArray *)array
 {
+    if (!array) array = @[];
     return [[USArrayWrapper alloc] initWithArray:[array copy]];
 }
 
