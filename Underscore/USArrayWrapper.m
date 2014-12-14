@@ -286,6 +286,17 @@
     };
 }
 
+- (NSInteger (^)(UnderscoreIntegerMapBlock))sumIntegers
+{
+    return ^NSInteger(UnderscoreIntegerMapBlock block) {
+        NSInteger sum = 0;
+        for (id obj in self.array) {
+            sum += block(obj);
+        }
+        return sum;
+    };
+}
+
 - (USArrayWrapper *(^)(UnderscoreArrayIteratorBlock))each
 {
     return ^USArrayWrapper *(UnderscoreArrayIteratorBlock block) {

@@ -190,6 +190,13 @@
     };
 }
 
++ (NSInteger (^)(NSArray *array, UnderscoreIntegerMapBlock block))sumIntegers
+{
+    return ^(NSArray *array, UnderscoreIntegerMapBlock block) {
+        return Underscore.array(array).sumIntegers(block);
+    };
+}
+
 + (void (^)(NSArray *, UnderscoreArrayIteratorBlock))arrayEach
 {
     return ^(NSArray *array, UnderscoreArrayIteratorBlock block) {

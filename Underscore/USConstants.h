@@ -37,3 +37,4 @@ typedef void (^UnderscoreDictionaryIteratorBlock)(id key, id obj);
 typedef id   (^UnderscoreDictionaryMapBlock)(id key, id obj);
 
 typedef NSComparisonResult (^UnderscoreSortBlock)(id a, id b);
+typedef NSInteger (^UnderscoreIntegerMapBlock)(id obj);

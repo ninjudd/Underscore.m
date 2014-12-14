@@ -59,6 +59,7 @@
 
 + (id (^)(NSArray *array, id memo, UnderscoreReduceBlock block))reduce;
 + (id (^)(NSArray *array, id memo, UnderscoreReduceBlock block))reduceRight;
++ (NSInteger (^)(NSArray *array, UnderscoreIntegerMapBlock block))sumIntegers;
 
 + (void (^)(NSArray *array, UnderscoreArrayIteratorBlock block))arrayEach;
 + (NSArray *(^)(NSArray *array, UnderscoreArrayMapBlock block))arrayMap;

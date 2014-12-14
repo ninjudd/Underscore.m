@@ -63,6 +63,7 @@
 
 @property (readonly) id (^reduce)(id memo, UnderscoreReduceBlock block);
 @property (readonly) id (^reduceRight)(id memo, UnderscoreReduceBlock block);
+@property (readonly) NSInteger (^sumIntegers)(UnderscoreIntegerMapBlock block);
 
 @property (readonly) USArrayWrapper *(^each)(UnderscoreArrayIteratorBlock block);
 @property (readonly) USArrayWrapper *(^map)(UnderscoreArrayMapBlock block);
