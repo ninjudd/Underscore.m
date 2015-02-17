@@ -104,6 +104,7 @@
 
 + (NSArray *(^)(NSDictionary *dictionary))keys;
 + (NSArray *(^)(NSDictionary *dictionary))values;
++ (NSArray *(^)(NSDictionary *dictionary))sortedKeys;
 + (NSArray *(^)(NSDictionary *dictionary))dictArray;
 
 + (NSDictionary *(^)(NSDictionary *dictionary, id key, id value))assoc;

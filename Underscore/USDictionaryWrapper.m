@@ -79,6 +79,14 @@
     return [USArrayWrapper wrap:self.dictionary.allValues];
 }
 
+- (USArrayWrapper *)sortedKeys
+{
+    NSArray *keys = [self.dictionary.allKeys sortedArrayUsingComparator:^NSComparisonResult(id key1, id key2) {
+        return [self.dictionary[key1] compare:self.dictionary[key2]];
+    }];
+    return [USArrayWrapper wrap:keys];
+}
+
 - (USArrayWrapper *)array
 {
     NSMutableArray *result = [NSMutableArray arrayWithCapacity:self.dictionary.count];

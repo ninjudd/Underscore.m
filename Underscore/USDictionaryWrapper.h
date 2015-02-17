@@ -39,6 +39,7 @@
 
 @property (readonly) USArrayWrapper *keys;
 @property (readonly) USArrayWrapper *values;
+@property (readonly) USArrayWrapper *sortedKeys;
 @property (readonly) USArrayWrapper *array;
 
 @property (readonly) USDictionaryWrapper *(^assoc)(id key, id value);

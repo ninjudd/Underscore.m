@@ -384,6 +384,12 @@
         return [USDictionaryWrapper wrap:dictionary].values.unwrap;
     };
 }
++ (NSArray *(^)(NSDictionary *))sortedKeys
+{
+    return ^(NSDictionary *dictionary) {
+        return [USDictionaryWrapper wrap:dictionary].sortedKeys.unwrap;
+    };
+}
 + (NSArray *(^)(NSDictionary *))dictArray
 {
     return ^(NSDictionary *dictionary) {
