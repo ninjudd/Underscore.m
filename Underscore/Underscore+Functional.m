@@ -37,6 +37,26 @@
     };
 }
 
++ (USArrayWrapper *(^)(NSRange range))arrayRange
+{
+    return ^(NSRange range) {
+        return [USArrayWrapper wrap:self.mapRange(range, ^(NSUInteger i) {
+            return [NSNumber numberWithUnsignedInteger:i];
+        })];
+    };
+}
+
++ (NSArray *(^)(NSRange range, UnderscoreMapIndexBlock block))mapRange
+{
+    return ^(NSRange range, UnderscoreMapIndexBlock block) {
+        NSMutableArray *array = [NSMutableArray array];
+        for (NSUInteger i = range.location; i < range.location + range.length; i++) {
+            [array addObject:block(i)];
+        }
+        return [NSArray arrayWithArray:array];
+    };
+}
+
 + (id (^)(NSArray *))first
 {
     return ^(NSArray *array) {

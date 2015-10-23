@@ -32,6 +32,9 @@
 
 + (USArrayWrapper *(^)(NSArray *))array;
 
++ (USArrayWrapper *(^)(NSRange))arrayRange;
++ (NSArray *(^)(NSRange, UnderscoreMapIndexBlock))mapRange;
+
 + (id (^)(NSArray *))first;
 + (id (^)(NSArray *))last;
 + (NSArray *(^)(NSArray *))rest;
